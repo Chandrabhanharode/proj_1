@@ -1,0 +1,28 @@
+<html>
+<body>
+<h3>Hi ${customerName}, <br>Welcome to the Cognis Complaint System!</h3>
+
+
+<div>
+   Your reference number is  <b>${trackingNumber}</b>.
+</div>
+
+<br>
+
+<div>
+	Please find our reply as below
+</div>
+<div>
+	${msg}
+</div>
+<div>
+	If you are not happy reply on below link <a href="${url}">Click</a>
+	
+	${url}
+</div>
+
+Thank and Regards
+<br>Cognis
+</body>
+
+</html>

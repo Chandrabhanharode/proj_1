@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Application context definition for RCL Web Application. -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<!-- ========================= RESOURCE DEFINITIONS ========================= -->
+ 
+ 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="username" value="sushil4it@gmail.com" />
+		<property name="password" value="" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.socketFactory.port">465</prop>
+				<prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+				<prop key="mail.smtp.port">465</prop>
+			</props>
+		</property>
+	</bean>
+
+<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+      <property name="velocityProperties">
+         <value>
+          resource.loader=class
+          class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+         </value>
+      </property>
+   </bean>
+   
+	<bean id="mailMail" class="com.cognis.app.mail.AppMailService">
+		<property name="mailSender" ref="mailSender" />
+			<property name="javaMailSender" ref="mailSender" />
+			<property name="velocityEngine" ref="velocityEngine"/>
+	</bean>
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/SALOON" />
+		<property name="username" value="root" />
+		<property name="password" value="123456" />
+	</bean>
+
+
+	<bean id="appBaseDao" class="com.cognis.app.dao.AppBaseDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+ 	<bean id="vendorDao" class="com.cognis.app.dao.impl.VendorDaoImpl">
+	    <property name="dataSource" ref="dataSource"/>
+	</bean>   
+	<bean id="userDao" class="com.cognis.app.dao.impl.UserDaoImpl">  
+	 	<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<bean id="addressdao" class="com.cognis.app.dao.impl.AddressDaoImpl">  
+	 	<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<bean id="logindao" class="com.cognis.app.dao.impl.LoginDaoImpl">  
+	 	<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<bean id="customerdao" class="com.cognis.app.dao.impl.CustomerDaoImpl">  
+	 	<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<bean id="serviceproviderdao" class="com.cognis.app.dao.impl.ServiceProviderDaoImpl">  
+	 	<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<bean id="saloonservicedaoimpl" class="com.cognis.app.dao.impl.SaloonServiceDaoImpl">  
+	 	<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<bean id="manuitemdaoimpl" class="com.cognis.app.dao.impl.ManuItemDaoImpl">  
+	 	<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<bean id="bookingDaoImpl" class="com.cognis.app.dao.impl.BookingDaoImpl">  
+	 	<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<bean id="vendorAndServiceListDao" class="com.cognis.app.dao.impl.VendorAndServiceListDaoImpl">  
+	 	<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+</beans>

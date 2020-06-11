@@ -1,0 +1,25 @@
+/* --Create vendor-- */
+{
+"vendorName":"xyz111",
+"phone": "9999999",
+"address":{
+	"address1":"bpl",
+	"address2":"htd",
+	"lattitude":"10",
+	"longitude":"20",
+	"city":"bpl",
+	"district":"betul",
+	"state":"mp",
+	"pinCode":"462023",
+	"location":"xxx"
+},
+
+"panNo":"122223",
+"otherCardNo":"" ,
+"emailID":"76d555se",
+"password":"123" 
+}
+/* --search vendor-- */
+http://localhost:8087/SaloonWebApp/rest/vendorService/search/01
+/* --delete vendor-- */
+http://localhost:8087/SaloonWebApp/rest/vendorService/delete/4

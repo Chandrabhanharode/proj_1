@@ -1,0 +1,215 @@
+@GET:
+http://localhost:8087/SaloonWebApp/rest/vendorAndServiceListService
+http://localhost:8087/SaloonWebApp/rest/upload
+ADD USER
+@POST:
+http://localhost:8090/SaloonWebApp/rest/userService
+176
+{
+	"name":"Siddharth",
+	"phone":"8249414901",
+	"email":"sid@gmail.com",
+	"password":"sidmailid",
+	"role":{
+	"roleId":"0"
+	}
+}
+
+99
+{
+	"name":"Chadra",
+	"phone":"7873468111",
+	"email":"chandu@gmail.com",
+	"password":"chandumailid",
+	"role":{
+	"roleId":"2"
+	}
+}
+
+879
+{
+	"name":"Shakti",
+	"phone":"9040411900",
+	"email":"shakti@gmail.com",
+	"password":"shaktimailid",
+	"role":{
+	"roleId":"1"
+	}
+}
+
+
+
+VALIDATION 
+@POST:
+http://localhost:8090/SaloonWebApp/rest/userService/validatetoken
+
+
+{
+	"phone":"8249414901",
+	"verificationCode":"913"
+}
+
+
+UPADTE user
+@PUT
+http://localhost:8090/SaloonWebApp/rest/userService
+
+{
+	"name":"Nikash",
+	"phone":"8249414901",
+	"email":"Nik@gmail.com",
+	"password":"sidmailid",
+	"roleId":"3"
+}
+
+GET LOGIN USER
+@GET
+http://localhost:8090/SaloonWebApp/rest/loginService
+
+{
+	"phone":"8249414901",
+	"password":"sidmailid"
+}
+
+
+ADD ADDRESS
+@POST
+
+http://localhost:8090/SaloonWebApp/rest/addressService/saveAddress
+
+{
+	"address1":"iti backside",
+	"address2":"",
+	"city":"Balasore",
+	"location":"",
+	"postalcode":"756001",
+	"userId":"1"
+}
+
+GET ADDRESS
+@GET
+http://localhost:8090/SaloonWebApp/rest/addressService
+
+{
+	"userId":"1"
+}
+
+UPDATE ADDRESS
+@PUT
+
+http://localhost:8090/SaloonWebApp/rest/addressService
+
+
+{
+	"address1":"iti Frontside",
+	"address2":"",
+	"city":"Bhadrak",
+	"location":"",
+	"postalcode":"756002",
+	"userId":"1"
+	}
+
+
+ADD CUSTOMER 
+@POST
+ 
+http://localhost:8090/SaloonWebApp/rest/customerService 
+
+{
+	"userId":"1",
+	"adharCard":"321qwe321"
+}
+
+GET CUSTOMER
+@GET
+
+http://localhost:8090/SaloonWebApp/rest/customerService 
+
+
+{
+	"userId":"1"
+}
+
+UPDATE CUSTOMER
+@PUT
+
+http://localhost:8090/SaloonWebApp/rest/customerService
+
+
+{
+	"userId":"1",
+	"adharCard":"567qwe567"
+}
+
+ADD VENDOR
+@POST
+
+http://localhost:8090/SaloonWebApp/rest/vendorService
+
+{
+"panNo":"122445",
+"otherCardNo":"1233456",
+"userId":"2"
+}
+
+GET VENDOR
+@GET
+http://localhost:8090/SaloonWebApp/rest/vendorService
+
+{
+	"userId":"2"
+}
+
+UPDATE VENDOR
+@PUT
+http://localhost:8090/SaloonWebApp/rest/vendorService
+
+{
+"panNo":"678910",
+"otherCardNo":"654321",
+"userId":"2"
+}
+
+
+ADD SERVICE PROVIDER
+@POST
+
+http://localhost:8090/SaloonWebApp/rest/serviceProviderService
+
+{
+"gstNumber":"122445",
+"businessRegisistrationId":"1233456",
+"userId":"3"
+}
+
+GET SERVICE PROVIDER
+@GET
+http://localhost:8090/SaloonWebApp/rest/serviceProviderService
+
+{
+	"userId":"3"
+}
+
+UPDATE SERVICE PROVIDER
+@PUT
+http://localhost:8090/SaloonWebApp/rest/serviceProviderService
+
+{
+"gstNumber":"678910",
+"businessRegisistrationId":"654321",
+"userId":"3"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+

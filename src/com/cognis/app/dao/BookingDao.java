@@ -1,0 +1,27 @@
+package com.cognis.app.dao;
+
+import java.util.List;
+
+import com.cognis.app.model.BookingModel;
+import com.cognis.app.model.ServiceProviderDtlsModel;
+
+public interface BookingDao {
+
+	void addBooking(BookingModel bookingModel);
+	
+	ServiceProviderDtlsModel getBookingList(BookingModel bookingModel);
+
+	public final String ADD_BOOKING="INSERT INTO BOOKING_DTL (CUSTOMER_FK,SERVICE_PROVIDER_FK,BOOKING_RATE,"
+			+ "BOOKING_STATUS,PAYMENT_STATUS,BOOKING_START_TIME,BOOKING_END_TIME,BOOKING_DATE) values (?,?,?,?,?,?,?,?)";
+
+	public final String GET_BOOKING="SELECT UI.USER_NAME AS SERVICE_PROVIDER_NAME, UI.USER_ID AS SERVICE_PROVIDER_ID,SV.SERVICE_NAME  AS  SERVICE_NAME, " + 
+			"SV.SERVICE_ID  AS SERVICE_ID ,SP.SEATING_CAPACITY AS SEATING_CAPACITY ,MT.PRICE  AS PRICE,MT.START_TIME AS " + 
+			"START_TIME ,MT.END_TIME  AS END_TIME " + 
+			"FROM SERVICE_PROVIDER SP INNER JOIN MANU_TABLE MT ON SP.USER_FK=MT.USER_FK " + 
+			" INNER JOIN SERVICE SV ON SV.SERVICE_ID=MT.SERVICE_FK " + 
+			" INNER JOIN USER_INFO UI ON UI.USER_ID=SP.USER_FK " + 
+			" WHERE SP.USER_FK=? AND SV.SERVICE_ID=?";
+	
+	public final String COUNT_AVABILE_TIME ="SELECT COUNT(*)  FROM BOOKING_DTL WHERE BOOKING_START_TIME=? AND BOOKING_END_TIME=? AND BOOKING_DATE=? ";
+	
+}

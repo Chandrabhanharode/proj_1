@@ -1,0 +1,17 @@
+<html>
+<body>
+<h3>Hi ${complainInput.name}, <br>Welcome to the Cognis Complaint System!</h3>
+
+<div>
+	Thanks for reaching us. We will be resolving your issue shortly. 
+</div>
+<div>
+   Your reference number is  <b>${complainInput.trackingNumber}</b>.
+</div>
+
+<br>
+Thank and Regards
+<br>RCL
+</body>
+
+</html>
